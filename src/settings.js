@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'muse mobile',
+  title: 'auvgo mobile',
 
   /**
    * @type {boolean} true | false

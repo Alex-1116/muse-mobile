@@ -15,6 +15,16 @@ const formItemRouter = {
   component: () => import('@/views/Form')
 }
 
+const homeItemRouter = {
+  path: '/homeItem',
+  name: 'homeItem',
+  meta: {
+    title: '',
+    requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+  },
+  component: () => import('@/views/Home')
+}
+
 const mainRouter = {
   path: '/',
   name: 'tabbar',
@@ -35,5 +45,6 @@ export const appRoutes = [
 export const routes = [
   loginRouter,
   mainRouter,
-  formItemRouter
+  formItemRouter,
+  homeItemRouter
 ]
