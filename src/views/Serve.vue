@@ -8,7 +8,9 @@ export default {
   name: "serve",
   components: {},
   data() {
-    return {};
+    return {
+      
+    };
   },
   computed: {},
   created() {},

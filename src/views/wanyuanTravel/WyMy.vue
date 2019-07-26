@@ -1,9 +1,9 @@
 <template>
-  <div class="myContainer">
-    <!-- <header class="header-box">
-      <i class="iconfont iconfanhui1 iconReturn" @click="returnClick"></i>
+  <div class="wyMyContainer">
+    <header class="header-box">
+      <i class="iconfont iconfanhui1 iconReturn" @click="returnPrev"></i>
       <div class="headerTitle">个人中心</div>
-    </header> -->
+    </header>
     <div class="content">
       <div class="userInfo">
         <div class="user-name">
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="user-head">
-          <img src="../assets/images/userInfo/head@2x.png" alt />
+          <img src="../../assets/images/userInfo/head@2x.png" alt />
         </div>
       </div>
       <div class="tabs">
@@ -40,41 +40,52 @@
           <i class="iconfont iconjinru list-skip"></i>
         </div>
       </div>
-      <div class="list">
-        <div class="listItem" @click="gotoSettings">
-          <i class="iconfont list-icon"></i>
-          <div class="list-text">
-            <span class="txt">设置</span>
-          </div>
-          <i class="iconfont iconjinru list-skip"></i>
-        </div>
+    </div>
+    <div class="bottomTabbar">
+      <div class="barItem" @click="gotoIndex">
+        <i class="iconfont iconshouye3 ico"></i>
+        <span class="text">首页</span>
+      </div>
+      <div class="barItem" @click="gotoTrip">
+        <i class="iconfont iconchuchashenqing ico"></i>
+        <span class="text">出差申请</span>
+      </div>
+      <div class="barItem">
+        <i class="iconfont iconbaoxiao ico"></i>
+        <span class="text">报销管理</span>
+      </div>
+      <div class="barItem">
+        <i class="iconfont iconfuwu1 ico"></i>
+        <span class="text">服务热线</span>
+      </div>
+      <div class="barItem">
+        <i class="iconfont iconwode3 ico"></i>
+        <span class="text textSelect">个人中心</span>
       </div>
     </div>
-    <!-- <div class="loginBtn" @click="gotoLogin">登录</div>
-    <div class="logout" @click="logout">退出</div>-->
   </div>
 </template>
 <script>
 export default {
-  name: "my",
+  name: "wyMy",
   components: {},
   data() {
     return {
       tabs: [
         {
-          imgUrl: require("../assets/images/userInfo/order_air.png"),
+          imgUrl: require("../../assets/images/userInfo/order_air.png"),
           txt: "机票订单"
         },
         {
-          imgUrl: require("../assets/images/userInfo/order_hotel.png"),
+          imgUrl: require("../../assets/images/userInfo/order_hotel.png"),
           txt: "酒店订单"
         },
         {
-          imgUrl: require("../assets/images/userInfo/order_train.png"),
+          imgUrl: require("../../assets/images/userInfo/order_train.png"),
           txt: "火车票订单"
         },
         {
-          imgUrl: require("../assets/images/userInfo/order_car.png"),
+          imgUrl: require("../../assets/images/userInfo/order_car.png"),
           txt: "用车订单"
         }
       ],
@@ -114,35 +125,27 @@ export default {
   created() {},
   mounted() {},
   methods: {
-    gotoLogin() {
-      this.$router.push({
-        name: "login"
-      });
+    gotoIndex() {
+      this.$router.push({ name: "wyIndex" });
     },
-    gotoSettings() {
-      this.$router.push({
-        name: "settings"
-      });
+    gotoTrip() {
+      this.$router.push({ name: "wyTripManage" });
     },
-    returnClick() {
+    returnPrev() {
       this.$router.go(-1);
-    },
-    async logout() {
-      await this.$store.dispatch("user/logout");
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     }
   }
 };
 </script>
 <style lang="less">
-@import "../assets/iconfont/iconfont.css";
-@import "../assets/common/common.css";
-.myContainer {
+@import "../../assets/iconfont/iconfont.css";
+@import "../../assets/common/common.css";
+.wyMyContainer {
   width: 100%;
-  background: #f2f2f2;
+  // background: #f2f2f2;
   .content {
     width: 100%;
-    // margin-top: 112px;
+    margin-top: 112px;
     margin-bottom: 110px;
     .userInfo {
       width: 100%;
@@ -304,30 +307,41 @@ export default {
       }
     }
   }
-}
-.loginBtn {
-  width: 500px;
-  height: 100px;
-  border-radius: 10px;
-  font-size: 30px;
-  color: #fff;
-  margin: 300px auto;
-  background: linear-gradient(160deg, #b100ff 20%, #00b3ff 80%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.logout {
-  width: 500px;
-  height: 100px;
-  border-radius: 10px;
-  font-size: 30px;
-  color: #555;
-  margin: 0 auto;
-  background: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .bottomTabbar {
+    width: 100%;
+    height: 98px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 1px 5px 7px 3px rgba(184, 184, 184, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .barItem {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .ico {
+        font-size: 40px;
+        color: #797979;
+      }
+      .ico.iconwode3 {
+        color: #68b6ff;
+      }
+      .text {
+        font-size: 20px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(121, 121, 121, 1);
+      }
+      .text.textSelect {
+        color: #68b6ff;
+      }
+    }
+  }
 }
 </style>
 
