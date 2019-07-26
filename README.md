@@ -1,4 +1,4 @@
-# auvgo-mobile
+# muse-mobile
 
 ## Project setup
 ```
