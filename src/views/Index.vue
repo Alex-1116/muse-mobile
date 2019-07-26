@@ -105,8 +105,8 @@ export default {
   },
   methods: {
     gotoForm(current) {
-      if (current.txt == "更多") {
-        this.$router.push({ name: "homeItem" });
+      if (current.txt == "万源差旅") {
+        this.$router.push({ name: "wyIndex" });
       }
     }
   }
